@@ -305,13 +305,14 @@ void loop() {
     // write the SBUS packet to an SBUS compatible servo
     //sprintf(output, "Ch1 %d Ch2 %d Ch3 %d Ch4 %d Ch5 %d Ch6 %d failSafe %d lostFrame %d", channels[0], channels[1], channels[2], channels[3], channels[4], channels[5], failSafe, lostFrame);
     if (failSafe == 1) {
-      sprintf(buff, "RX,%d,-1,-1,-1,-1,-1,-1,-1",t);
+      sprintf(buff, "RX,%d,-1,-1,-1,-1,-1,-1,-1,-1",t);
       mcpwm_set_throttle_pwm (1500);
       mcpwm_set_steering_pwm (1500); 
     } else {
-      sprintf(buff, "RX,%d,%d,%d,%d,%d,%d,%d,%d", t, 
+      sprintf(buff, "RX,%d,%d,%d,%d,%d,%d,%d,%d,%d", t, 
       mapRange(358, 1680, 1000, 2000, channels[2]), 
-      mapRange(358, 1680, 1000, 2000, channels[0]), 
+      mapRange(358, 1680, 1000, 2000, channels[0]),
+      mapRange(0, 2000, 1000, 2000, channels[1]),
       mapRange(0, 2000, 1000, 2000, channels[4]), 
       mapRange(0, 2000, 1000, 2000, channels[5]),
       cmd_throttle,
